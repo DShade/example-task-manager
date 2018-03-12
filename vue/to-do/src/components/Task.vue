@@ -1,7 +1,8 @@
 <template>
   <div class="task">
     <h3>{{name}}</h3>
-    <input type="checkbox" @click="handleClick"/>
+    <input type="checkbox" @click="handleCheckerClick"/>
+    <div @click="handleDelete" class="delete badge"><b>✖</b></div>
   </div>
 </template>
 
@@ -10,9 +11,12 @@
     props: ['name', 'done', 'index'],
     name: 'task',
     methods: {
-      handleClick() {
+      handleCheckerClick() {
         this.$parent.$emit('show-toast', this.index, this.name, this.done);
         console.log(`sending this.$parent.$emit('show-toast', ${this.index}, ${this.name}, ${this.done}`);
+      },
+      handleDelete() {
+        this.$parent.$emit('delete-task', this.index);
       }
     }
   }
@@ -20,19 +24,49 @@
 
 <style scoped>
   .task {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
     padding: 7px;
     background-color: #f1f1f1;
     box-shadow: -3px 5px 8px 4px #00000038;
     width: 800px;
+    position: relative;
+    color: black;
+    height: 50px;
+    margin-top: 25px
+  }
+
+  .task h3{
+    width: 50%;
+    position: absolute;
+    left: 25px;
+    text-align: left;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 20px;
   }
 
   input {
-    height: 30px;
-    width: 30px;
+    width: 25px;
+    height: 25px;
+    top: 0;
+    position: absolute;
+    bottom: 0;
+    margin-top: auto;
+    right: 25px;
+    margin-bottom: auto;
+  }
+  .badge{
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    line-height: 20px;
+    cursor: pointer;
   }
 
 </style>

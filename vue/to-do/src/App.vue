@@ -26,6 +26,6 @@
     margin-top: 60px;
   }
   html{
-    overflow: hidden;
+    background-color: #253044;
   }
 </style>
