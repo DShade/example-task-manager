@@ -1,22 +1,31 @@
 <template>
   <div class="task">
     <h3>{{name}}</h3>
-    <input type="checkbox" @click="handleCheckerClick"/>
-    <div @click="handleDelete" class="delete badge"><b>✖</b></div>
+    <input type="checkbox" @click="handleCheckerClick" v-model="isChecked"/>
+    <div class="delete badge" @click.prevent="handleDelete"><b>✖</b></div>
   </div>
 </template>
 
 <script>
   export default {
     props: ['name', 'done', 'index'],
+    data(){
+      return{
+        isChecked: this.done
+      }
+    },
     name: 'task',
     methods: {
       handleCheckerClick() {
-        this.$parent.$emit('show-toast', this.index, this.name, this.done);
-        console.log(`sending this.$parent.$emit('show-toast', ${this.index}, ${this.name}, ${this.done}`);
+        console.log(this.done);
+        this.$store.dispatch("tasks/toggle", this.index);
+        let message = this.name ;
+        this.isChecked = !this.isChecked;
+        message += !this.isChecked ? ' is now marked as \'not done\'' : ' is now marked as \'done\'';
+        this.$store.dispatch("toast/setMsg", message);
       },
       handleDelete() {
-        this.$parent.$emit('delete-task', this.index);
+        this.$store.dispatch("tasks/deleteTask", this.index);
       }
     }
   }

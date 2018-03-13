@@ -9,28 +9,18 @@
 <script>
   export default {
     name: 'toast',
-    props: ['message'],
-    data() {
-      return {
-        visible: false,
-        interval: null
-      }
-    },
     created() {
       this.$on('show-toast', (m) => {
         console.log('show-toast received');
         this.showToast(m)
       })
     },
-    watch: {
+    computed: {
+      visible() {
+        return this.$store.getters['toast/isShowing'];
+      },
       message() {
-        if (!this.visible) {
-          this.visible = true;
-          this.interval = setInterval(() => {
-            this.visible = false;
-            clearInterval(this.interval)
-          }, 5000); //to hide the toast again after 5 seconds
-        }
+        return this.$store.getters['toast/getMsg'];
       }
     }
   }
