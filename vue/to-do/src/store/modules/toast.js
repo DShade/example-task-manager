@@ -2,14 +2,14 @@ export default {
   namespaced: true,
   state: {
     showing: false,
-    msg: ""
+    msg: ''
   },
-  mutations:{
-    SET_MSG(state, msg){
+  mutations: {
+    SET_MSG(state, msg) {
       state.msg = msg;
-      if(!state.showing){
+      if (!state.showing) {
         state.showing = true;
-        let x = setInterval(()=>{
+        let x = setInterval(() => {
           state.showing = false;
           clearInterval(x);
         }, 2000);
@@ -17,8 +17,8 @@ export default {
     }
   },
   actions: {
-    setMsg({commit}, msg){
-      commit("SET_MSG", msg);
+    setMsg({commit}, msg) {
+      commit('SET_MSG', msg);
     }
   },
   getters: {
