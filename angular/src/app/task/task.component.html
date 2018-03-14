@@ -1,3 +1,7 @@
-<p>
-  task works!
-</p>
+<div class="task">
+  <h3>{{task.name}}</h3>
+  <input type="checkbox" [(checked)]="task.done" (click)="toggled()">
+  <div class="delete badge" (click)="deleteTask()">
+    <b>✖</b>
+  </div>
+</div>
