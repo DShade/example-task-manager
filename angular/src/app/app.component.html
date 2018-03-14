@@ -4,8 +4,8 @@
   <h1 class="App-title">
     Hello world task manager
   </h1>
-  <div id="task-wrapper" *ngFor="let task of todoList; let i = index">
-    <app-task [task]="task" [index]="i"></app-task>
+  <div id="task-wrapper">
+    <app-task *ngFor="let task of todoList; let i = index" [task]="task" [index]="i"></app-task>
   </div>
   <app-toast></app-toast>
   <button id="add-button" (click)="addTask()"><b>Add a task</b></button>

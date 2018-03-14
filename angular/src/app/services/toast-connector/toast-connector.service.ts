@@ -9,11 +9,14 @@ export class ToastConnectorService {
 
   showMessage(message: String) {
     this.toastMessageHook(message);
+
     if (!this.toastVisibilityState) {
+
       this.interval = setInterval(() => {
         this.toastVisibleHook(false);
         clearInterval(this.interval);
       }, 2000);
+
     }
     this.toastVisibleHook(true);
     console.log('toast set');

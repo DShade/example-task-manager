@@ -8,8 +8,8 @@ import {ToastConnectorService} from '../services/toast-connector/toast-connector
 })
 export class ToastComponent implements OnInit {
 
-  private message: String = 'Init';
-  private visible: Boolean = false;
+  message: String = 'Init';
+  visible: Boolean = false;
 
   constructor(private toastConnector: ToastConnectorService) {
     toastConnector.registerAsToast((msg) => {this.message = msg; }, (bool) => {

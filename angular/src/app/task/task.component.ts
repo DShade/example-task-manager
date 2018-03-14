@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {Task} from '../classes/task';
-import {ToastConnectorService} from "../services/toast-connector/toast-connector.service";
-import {StoreService} from "../services/store/store.service";
+import {ToastConnectorService} from '../services/toast-connector/toast-connector.service';
+import {StoreService} from '../services/store/store.service';
 
 
 @Component({
@@ -10,7 +10,7 @@ import {StoreService} from "../services/store/store.service";
   styleUrls: ['./task.component.css']
 })
 
-export class TaskComponent implements OnInit {
+export class TaskComponent{
   @Input() task: Task;
   @Input() index: Number;
 
@@ -28,8 +28,4 @@ export class TaskComponent implements OnInit {
 
   constructor(private toastConnector: ToastConnectorService,
               private store: StoreService) { }
-
-  ngOnInit() {
-  }
-
 }

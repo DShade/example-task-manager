@@ -29,7 +29,7 @@ export default {
       let name = await prompt('Please enter the taskname');
       if (name) {
         commit('ADD_TASK', {name: name, done: false});
-        dispatch("toast/setMsg", `New task '${name}' created!`, {root: true}); // {root: true} allows us to access another namespaced module
+        dispatch('toast/setMsg', `New task '${name}' created!`, {root: true}); // {root: true} allows us to access another namespaced module
       }
     },
     deleteTask({commit}, index) {

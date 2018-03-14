@@ -10,7 +10,6 @@ import {ToastConnectorService} from './services/toast-connector/toast-connector.
 })
 export class AppComponent {
   todoList = Array<Task>();
-  test = new Task('test');
 
   async addTask() {
     const name = await prompt('Please enter the taskname');
