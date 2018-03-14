@@ -18,7 +18,7 @@
   import Task from './Task'
 
   export default {
-    name: 'HelloWorld',
+    name: 'TaskManager',
     methods: {
       addTask(){
         this.$store.dispatch("tasks/addTask")
